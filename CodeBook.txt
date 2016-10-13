@@ -1,0 +1,109 @@
+==================================================================
+Coursera JHU - Getting and Cleaning Data Peer review final project based on
+data obtained from:
+#Human Activity Recognition Using Smartphones Dataset
+#Version 1.0
+
+NOTE: 
+The # sign designated original content provided in the original codebook"
+==================================================================
+#	Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
+#	Smartlab - Non Linear Complex Systems Laboratory
+#	DITEN - Università degli Studi di Genova.
+#	Via Opera Pia 11A, I-16145, Genoa, Italy.
+#	activityrecognition@smartlab.ws
+#	www.smartlab.ws
+==================================================================
+
+#	The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 #years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, #STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded #accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a #constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained #dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for #generating the training data and 30% the test data. 
+
+#The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then #sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor #acceleration signal, which has gravitational and body motion components, was separated using a #Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to #have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each #window, a vector of features was obtained by calculating variables from the time and frequency domain. #See 'features_info.txt' for more details. 
+
+(Fdata3) For each record it is provided:
+======================================
+
+- Mean and Standard Deviation of the Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- Mean and Standard Deviation of the Triaxial Angular velocity from the gyroscope. 
+- An 86-variable dataframe capturing the subject, activity subject is performing and 86 Features    	describing only the mean or standard deviation of those features for fdata3.
+
+(tidy_data) For each record it is provided:
+======================================
+- The average of the Mean and Standard Deviation of the Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- The average of the Mean and Standard Deviation of the Triaxial Angular velocity from the gyroscope. 
+- An 86-variable dataframe capturing the subject, activity subject is performing and 86 Features    	describing only the average of the mean or standard deviation of those features for fdata3 subsetted by Subject then Activity_Label.
+
+
+
+The dataset includes the following files:
+=========================================
+
+- 'README.txt'
+
+- 'CodeBook.txt'
+
+- 'fdata3' - a combined dataset that captures only the mean and standard deviation Features from the combined original dataset including the Activity Label and Subject Code for each row.  The dimensions are 10,299 observations of 86 variables.
+
+- 'tidy_data' - a combined dataset that captures only the mean of the mean and standard deviation Features from the combined original dataset.  Each row includes the Activity Label and Subject Code.  The dimensions are 180 observations of 86 variables including subject and activity labels.
+
+
+==================================================================================
+Coursera Getting and Cleaning Data peer graded assignment
+The data sets presented are a subset of the original dataset presented in the Feature Selection listed below.  The assignment specifically requested only mean and standard deviation data.  Some key points to fdata3 (my first dataset):
+
+1) The train and test datasets were split 70/30 from an original test group, train and test are not variables. 
+
+2) The request to retain only mean and std data columns combined with the full original CodeBook suggests the Features in the dataset did not fall neatly into mean() and std() demarcations.  I erred on the side of more data is better and used an open grep on of the Features.txt, the labels of the dataset columns.  Specifically I used:  
+
+grep("mean()|std()", colnames(fulldata), value=T, ignore.case = TRUE)    
+
+FData3 - specific
+=========
+Subject - the number assigned to a subject (1-30)
+
+Activity_Label - One of six character values descriving what activity the subject was engaged in when the measurement was taken. 
+WALKING
+WALKING_UPSTAIRS
+WALKING_DOWNSTAIRS
+SITTING
+STANDING
+LAYING
+
+84 features - Capturing only the mean and standard deviation forms of the features.
+
+
+tidy_data
+==========
+Subject - the number assigned to a subject (1-30)
+
+Activity_Label - One of six character values descriving what activity the subject was engaged in when the measurement was taken. 
+WALKING
+WALKING_UPSTAIRS
+WALKING_DOWNSTAIRS
+SITTING
+STANDING
+LAYING
+
+84 features - Capturing only the the average of the mean and standard deviation forms of the features listed in fdata3, summarized by Subject and Activity_Label.
+
+
+Feature Selection 
+=================
+
+The features selected for the fdata3 dataset come from the combined train and test datasets.
+The features created for the tidy_data dataset draws directly from the fdata3 dataset. 
+The set of variables that were derived from theoriginal combined dataset: 
+
+mean(): Mean value
+std(): Standard deviation
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+angle(): Angle between two vectors.
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
+gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
+
+The complete list of variables of each feature vector is available in 'fdata3.txt' and tidy_data2.txt
