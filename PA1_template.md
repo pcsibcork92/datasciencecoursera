@@ -39,7 +39,7 @@ range <- length(step1$step_sum)
 hist(step1$step_sum, breaks=range, main="Histogram of Total Steps Taken per Day", xlab = "Total Daily Steps", col = "green")
 ```
 
-![](PA1_template_files/figure-html/hist1-1.png)<!-- -->
+![](plots/plot-hist1-1.png)<!-- -->
 
 #### 3) Calculate and report the mean and median of the total number of steps taken per day
 
@@ -60,7 +60,7 @@ par(mfrow=c(1,1))
 with(avesteps, plot(interval, steps, type = "l", main = "Average Number of Steps by 5min Interval averaged across all days", xlab = "5 min intervals over 24 hours period", ylab = "Number of steps"))
 ```
 
-![](PA1_template_files/figure-html/avesteps-1.png)<!-- -->
+![](plots/plot-avesteps-1.png)<!-- -->
 
 #### 5) Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -105,7 +105,7 @@ range <- length(step2$step_sum)
 hist(step2$step_sum, breaks=range, main="Histogram of Total Steps Taken per Day \n Imputed Dataset", xlab = "Total Daily Steps", col = "green")
 ```
 
-![](PA1_template_files/figure-html/histogram1-1.png)<!-- -->
+![](plots/plot-histogram1-1.png)<!-- -->
 
 ```r
 astepmean <- mean(step2$step_sum)
@@ -175,6 +175,6 @@ xyplot(steps~interval|w_day, data=activity22,
        main="Steps by Interval", xlab="Interval",  ylab="Number of Steps",layout=c(1,2), type="l", lwd=1, col="black")
 ```
 
-![](PA1_template_files/figure-html/panel_plot-1.png)<!-- -->
+![](plots/plot-panel_plot-1.png)<!-- -->
 
 Findings:  weekend steps/intervals are higher after 9:00 than the weekday counts.
