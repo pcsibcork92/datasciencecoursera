@@ -3,12 +3,14 @@ title: "rres_proj1"
 date: "November 22, 2016"
 output: 
   html_document: 
+    keep_md: yes
     toc: yes
     toc_depth: 4
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(base.dir = 'docs')
 ```
 # Setup - Load Data and Libraries
 Load data
